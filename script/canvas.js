@@ -1,3 +1,5 @@
+let staticVariable = 0;
+
 function draw() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
@@ -7,8 +9,7 @@ function draw() {
     // ctx.fillRect (10, 10, 20, 20);
 
     ctx.fillStyle = "rgba(200, 100, 20, 0.2)";
-    ctx.fillRect (0, 0, 700, 700);
-
+    ctx.fillRect (0, 0, 430, 430);
     // 바둑알 그리기용 원 
     var accumOffsetX = 0;
     var accumOffsetY = 0;
@@ -25,13 +26,23 @@ function draw() {
         var endAngle = Math.PI * 2; // End point on circle
         var anticlockwise = false; 
         ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-
-        ctx.stroke(); // 외부 선만 
+        if((i + j) % 2 == 0) {
+          ctx.stroke(); // 외부 선만 
+        } else {
+          ctx.fillStyle = "rgba(100,100,100, 1)";
+          ctx.fill();
+        }
 
         accumOffsetX += 10;
       }
       accumOffsetY += 10;
     }
-    //ctx.fill(); // 내부 채우기
+    var newDIV = document.createElement("div");
+    newDIV.innerHTML = `test : ${staticVariable++}`;
+    newDIV.setAttribute("id", "myDiv");
+    newDIV.style.backgroundColor = "yellow";
+    var p = document.getElementById("body");
+    p.appendChild(newDIV);
   }
+
 }
