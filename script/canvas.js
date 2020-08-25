@@ -7,7 +7,7 @@ function draw() {
 
     // ctx.fillStyle = "rgb(200,0,0)";
     // ctx.fillRect (10, 10, 20, 20);
-
+    ctx.clearRect(0,0,canvas.width, canvas.height);
     ctx.fillStyle = "rgba(200, 100, 20, 0.2)";
     ctx.fillRect (0, 0, 430, 430);
     // 바둑알 그리기용 원 
@@ -26,7 +26,7 @@ function draw() {
         var endAngle = Math.PI * 2; // End point on circle
         var anticlockwise = false; 
         ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
-        if((i + j) % 2 == 0) {
+        if((i + j) % 2 == staticVariable % 2) {
           ctx.stroke(); // 외부 선만 
         } else {
           ctx.fillStyle = "rgba(100,100,100, 1)";
@@ -37,12 +37,16 @@ function draw() {
       }
       accumOffsetY += 10;
     }
-    var newDIV = document.createElement("div");
-    newDIV.innerHTML = `test : ${staticVariable++}`;
-    newDIV.setAttribute("id", "myDiv");
-    newDIV.style.backgroundColor = "yellow";
-    var p = document.getElementById("body");
-    p.appendChild(newDIV);
+    let nowDIV = document.getElementById("myDiv");
+    if(nowDIV == undefined) {
+      var newDIV = document.createElement("div");
+      newDIV.innerHTML = `test : ${staticVariable++}`;
+      newDIV.setAttribute("id", "myDiv");
+      newDIV.style.backgroundColor = "yellow";
+      let p = document.getElementById("body");
+      p.appendChild(newDIV);
+    } else {
+      nowDIV.innerHTML = `test : ${staticVariable++}`;
+    }
   }
-
 }
