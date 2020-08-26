@@ -42,7 +42,7 @@ function draw() {
       var newDIV = document.createElement("div");
       newDIV.innerHTML = `test : ${staticVariable++}`;
       newDIV.setAttribute("id", "myDiv");
-      newDIV.style.backgroundColor = "yellow";
+      newDIV.style.backgroundColor = "gray";
       let p = document.getElementById("body");
       p.appendChild(newDIV);
     } else {
