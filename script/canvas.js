@@ -1,5 +1,28 @@
 let staticVariable = 0;
 
+class PentagoFullTable {
+  constructor() {
+    this.fullTable = new Array(2);
+    for(let i=0;i<2;++i) {
+      this.fullTable[i] = new Array(2);
+    }
+    for(let i=0;i<2;++i) {
+      for(let j=0;j<2;++j) {
+        this.fulltable[i][j] = new Pentago_3_3();
+      }
+    }
+  }
+}
+
+class Pentago_3_3 {
+  constructor() {
+    this.table = new Array(3);
+    for(let i=0;i<3;++i) {
+      this.table[i] = new Array(3);
+    }
+  }
+}
+
 function draw() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
@@ -32,11 +55,15 @@ function draw() {
           ctx.fillStyle = "rgba(100,100,100, 1)";
           ctx.fill();
         }
-
         accumOffsetX += 10;
       }
       accumOffsetY += 10;
     }
+    ctx.beginPath();
+    ctx.fillStyle("rgb(255,255,255)");
+    ctx.moveTo(30, 30);
+    ctx.lineTo(350, 30);
+    ctx.stroke();
     let nowDIV = document.getElementById("myDiv");
     if(nowDIV == undefined) {
       var newDIV = document.createElement("div");
