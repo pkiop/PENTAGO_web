@@ -1,5 +1,9 @@
 let staticVariable = 0;
 
+const EMPTY = 0;
+const WHITE = 1;
+const BLACK = 2;
+
 class PentagoFullTable {
   constructor() {
     this.fullTable = new Array(2);
@@ -8,7 +12,14 @@ class PentagoFullTable {
     }
     for(let i=0;i<2;++i) {
       for(let j=0;j<2;++j) {
-        this.fulltable[i][j] = new Pentago_3_3();
+        this.fullTable[i][j] = new Pentago_3_3();
+      }
+    }
+  }
+  clear() {
+    for(let i=0;i<2;++i) {
+      for(let j=0;j<2;++j) {
+        this.fullTable[i][j].clear();
       }
     }
   }
@@ -21,7 +32,17 @@ class Pentago_3_3 {
       this.table[i] = new Array(3);
     }
   }
+  
+  clear() {
+    for(let i=0;i<3;++i) {
+      for(let j=0;j<3;++j) {
+        this.table[i] = EMPTY;
+      }
+    }
+  }
 }
+
+const TABLE = new PentagoFullTable();
 
 function draw() {
   let canvas = document.getElementById("canvas");
